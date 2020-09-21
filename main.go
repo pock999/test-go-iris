@@ -3,11 +3,16 @@ package main
 import (
     "fmt"
     "github.com/kataras/iris/v12"
+    "github.com/kataras/iris/v12/mvc"
+
+    "app/controllers"
 )
 
 func main() {
     app := iris.New()
     
+    app.Use(iris.Compression)
+
     app.Logger().SetLevel("debug")
 
     app.Get("/pong", pong);
@@ -16,7 +21,13 @@ func main() {
 
     app.Get("/jjson", jjson);
 
+    testAPI := app.Party("/test")
 
+    testMVC := mvc.New(testAPI)
+
+    testMVC.Handle(new(controllers.TestController))
+
+    // controllers.TestGet();
 
     app.Run(
         iris.Addr("localhost:8080"),
