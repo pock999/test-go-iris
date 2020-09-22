@@ -14,3 +14,9 @@ func (c *TestController) Get(ctx iris.Context) {
         "get": "test controller",
     })
 }
+
+func (c *TestController) Post(ctx iris.Context) {
+	ctx.JSON(iris.Map{
+        "post": "test controller",
+    })
+}

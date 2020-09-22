@@ -4,6 +4,7 @@ go 1.14
 
 require (
 	github.com/golang/protobuf v1.4.2 // indirect
+	github.com/iris-contrib/middleware/cors v0.0.0-20200913183508-5d1bed0e6ea4 // indirect
 	github.com/kataras/iris v0.0.2 // indirect
 	github.com/kataras/iris/v12 v12.2.0-alpha.0.20200919221030-c2f9e57b84f9
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect

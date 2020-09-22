@@ -4,6 +4,7 @@ import (
     "fmt"
     "github.com/kataras/iris/v12"
     "github.com/kataras/iris/v12/mvc"
+    "github.com/iris-contrib/middleware/cors"
 
     "app/controllers"
 )
@@ -11,6 +12,18 @@ import (
 func main() {
     app := iris.New()
     
+    // cors
+    crs := cors.New(cors.Options{
+        AllowedOrigins:   []string{"*"},
+        AllowedMethods:   []string{"GET", "POST", "DELETE", "PUT"},
+        AllowCredentials: true,
+    })
+
+    app.Use(crs)
+
+    app.AllowMethods(iris.MethodOptions) // <- HERE
+
+    // must
     app.Use(iris.Compression)
 
     app.Logger().SetLevel("debug")
